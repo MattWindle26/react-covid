@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
+import CovidCountry from "./CovidCountry";
 
 function App() {
+
+  const [covidContries, setCovidCountries] = useState(null);
+
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/countries")
+    .then(res => {
+      return res.json();
+    })
+    .then((data) => {
+      setCovidCountries(data);
+    })
+    //Loads data from API as when the app starts
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="country-grid">
+      {covidContries && <CovidCountry covidContries={covidContries} /> }
+      {!covidContries && "Loading..."}
     </div>
   );
 }
