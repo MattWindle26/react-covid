@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
-import './App.css';
-import CovidCountry from "./CovidCountry";
+import './css/App.css';
+import CovidCountry from "./Components/CovidCountry";
+import Nav from "./Components/Nav";
+
 
 function App() {
 
@@ -18,10 +20,27 @@ function App() {
   }, []);
 
   return (
-    <div className="country-grid">
-      {covidContries && <CovidCountry covidContries={covidContries} /> }
-      {!covidContries && "Loading..."}
+    <div className="dashboard">
+      <Nav />
+      <div className="dashboard-content">
+
+        <div className="dashboard-block">
+          <h2>Recent info</h2>
+          <div className="results-table" id="style-3">
+            <div className="single-row table-header">
+              <p>Country</p>
+              <p>Cases</p>
+              <p>Deaths</p>
+              <p>Recovered</p>
+            </div>
+            {covidContries && <CovidCountry covidContries={covidContries} />}
+             {!covidContries && "Loading..."}
+          </div>
+        </div>
+        
+      </div>
     </div>
+
   );
 }
 
