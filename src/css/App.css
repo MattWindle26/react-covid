@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   line-height: 1.5;
 }
 
@@ -19,21 +19,30 @@ body{
 .dashboard-content{
   margin: 20px;
   background-color: #F3F6F9;
-  width: 100%;
   padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 600px));
   gap: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  
 }
 .dashboard-block{
+  width: 600px;
   padding: 20px;
   background: white;
   box-shadow: 0 5px 22px rgba(0,0,0,0.05);
 }
+.dashboard-block h2{
+  margin-bottom: 20px;
+}
+.all-results{
+  grid-row: 2 / -1;
+}
 
 .results-table{
   overflow-y: scroll;
-  height: 85vh;
+  height: 90%;
 }
 .table-header{
   background-color: white;
@@ -68,4 +77,34 @@ body{
 #style-3::-webkit-scrollbar-thumb
 {
 	background-color: #000000;
+}
+.global-data{
+  display: flex;
+}
+.global-data img{
+  margin-bottom: 10px;
+  width: 60px;
+  height: 60px;
+
+}
+.gd-stat{
+  min-width: 100px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  letter-spacing: 1px;
+  font-weight: 600;
+  background-color: #5779FF;
+  color: #F3F6F9;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.global-data .gd-stat p{
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+.global-data .gd-stat h3{
+  font-size: 1.2rem;
+  font-weight: 600;
 }

@@ -4,7 +4,6 @@ const Covid = ({ covidContries } ) => {
     return (
         
         <>
-        
             { covidContries.map(covidCountry => (
             <div className="single-row" key={covidCountry.countryInfo.id}>
                     <p>{covidCountry.country}</p>

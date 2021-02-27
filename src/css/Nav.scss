@@ -1,8 +1,29 @@
 nav{
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
     width: 300px;
     background-color: #0B2559;
     ul{
         list-style-type: none;
     }
+    h1{
+        color: #F3F6F9;
+        display: flex;
+        align-items: center;
+        font-weight: 300;
+        font-size: 1.25rem;
+        margin-bottom: 40px;
+        svg{
+            width: 40px;
+            height: 40px;
+            margin-right: 20px;
+        }
+        span{
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 5px;
+        }
+    }
+
 }

@@ -1,10 +1,42 @@
 nav {
-  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px 20px;
   width: 300px;
   background-color: #0B2559;
 }
 
 nav ul {
   list-style-type: none;
+}
+
+nav h1 {
+  color: #F3F6F9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 300;
+  font-size: 1.25rem;
+  margin-bottom: 40px;
+}
+
+nav h1 svg {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+nav h1 span {
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 5px;
 }
 /*# sourceMappingURL=Nav.css.map */
