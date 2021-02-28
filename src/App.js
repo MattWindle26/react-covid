@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './css/App.css';
-import CovidCountry from "./Components/CovidCountry";
+import CountryList from "./Components/CountryList";
 import Nav from "./Components/Nav";
 import GlobalStats from "./Components/GlobalStats";
 
@@ -27,6 +27,7 @@ function App() {
     })
     .then((data) => {
       setCovidAll([data]);
+      // all the data from the api
       setLastUpdate(timeDate(data.updated))
     })
 
@@ -58,7 +59,7 @@ function App() {
       <Nav />
       <div className="dashboard-content">
         <div className=" dashboard-block dashboard-nav">
-          <p>last update: {lastUpdate} GMT </p>
+          <p>last update: {lastUpdate} GMT</p>
         </div>
         <div className="dashboard-block all-results">
           <h2>Recent info (Country)</h2>
@@ -69,7 +70,7 @@ function App() {
               <p>Deaths</p>
               <p>Recovered</p>
             </div>
-            {covidContries && <CovidCountry covidContries={covidContries} />}
+            {covidContries && <CountryList covidContries={covidContries} />}
              {!covidContries && "Loading..."}
           </div>
         </div>
@@ -81,7 +82,7 @@ function App() {
           {!covidAll && "Loading..."}
         </div>       
        <div className="dashboard-block adaptive-data">
-          <h2>Global stats</h2>
+          <h2>Nothing yet</h2>
         </div>
         
       </div>

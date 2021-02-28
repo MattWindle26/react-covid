@@ -1,6 +1,3 @@
-import cases from '../Icons/group.svg';
-import deaths from '../Icons/skull.svg';
-import recovered from '../Icons/hospital.svg';
 import '../css/App.css';
 
 
