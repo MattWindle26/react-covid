@@ -1,7 +1,7 @@
 import "../css/Nav.css";
 
 
-const Nav = () => {
+const Nav = ( ) => {
     return (
         <nav>
             <h1>

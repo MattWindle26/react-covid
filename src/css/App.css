@@ -28,18 +28,32 @@ body{
   
 }
 .dashboard-block{
-  width: 600px;
+  width: 100%;
   padding: 20px;
   background: white;
   box-shadow: 0 5px 22px rgba(0,0,0,0.05);
 }
 .dashboard-block h2{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+.dashboard-block p{
+  margin-bottom: 10px;
 }
 .all-results{
+  grid-row: 3 / -1;
+  grid-column: 1 / 6;
+}
+.global-stats{
+    grid-column: 1 / 6;
+}
+.dashboard-nav{
+  grid-column: 1 / -1;
+  width: 100%;
+}
+.adaptive-data{
+  grid-column: 6 / -1;
   grid-row: 2 / -1;
 }
-
 .results-table{
   overflow-y: scroll;
   height: 90%;
