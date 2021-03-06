@@ -1,3 +1,11 @@
+# React Covid Tracker
+
+This project has been a way to put my new skills in React to the test. It is a simple app that tracks the current situation on Covid 19. It gives a brieft overview of each countries data but allows the user to click the country of choice to get more in-depth infomation.
+
+All data is supplied from [https://disease.sh](https://disease.sh). 
+
+Feel free to clone this repo have a play around yourself, give me feedback as I am still learning at the moment :)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
