@@ -10,6 +10,7 @@ function App() {
   const [covidContries, setCovidCountries] = useState(null);
   const [covidAll, setCovidAll] = useState(null);
   const [lastUpdate, setLastUpdate] = useState("");
+  const [specificCountry, setSpecificCountry] = useState(null);
 
   useEffect(() => {
 
@@ -28,6 +29,7 @@ function App() {
     .then((data) => {
       setCovidAll([data]);
       // all the data from the api
+      console.log(data.updated);
       setLastUpdate(timeDate(data.updated))
     })
 
@@ -37,22 +39,28 @@ function App() {
 
 
   const timeDate = (timestamp) => {
-    var a = new Date(timestamp * 1000);
+    console.log(timestamp);
+    var a = new Date(timestamp);
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var year = a.getFullYear();
     var month = months[a.getMonth()];
     var date = a.getDate();
     var hour = a.getHours();
     var min = a.getMinutes();
-    var sec = a.getSeconds();
-    var time = date + ' ' + month + ' ' + hour + ':' + min;
+    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
     return time;
   }
 
 
-
-
-
+  const fetchCountryData = () =>{
+    fetch("https://disease.sh/v3/covid-19/countries/" + specificCountry)
+      .then(res => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data)
+      })
+  }
 
   return (
     <div className="dashboard">
@@ -70,8 +78,12 @@ function App() {
               <p>Deaths</p>
               <p>Recovered</p>
             </div>
-            {covidContries && <CountryList covidContries={covidContries} />}
-             {!covidContries && "Loading..."}
+            {covidContries && covidAll && 
+            <CountryList 
+            covidContries={covidContries}
+            setSpecificCountry={setSpecificCountry}
+             />}
+            {!covidContries && "Loading..."}
           </div>
         </div>
 
@@ -82,12 +94,13 @@ function App() {
           {!covidAll && "Loading..."}
         </div>       
        <div className="dashboard-block adaptive-data">
-          <h2>Nothing yet</h2>
+          <h2>Data for {specificCountry && specificCountry}</h2>
+          {specificCountry && fetchCountryData()}
         </div>
         
       </div>
     </div>
-
+      
   );
 }
 

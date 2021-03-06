@@ -73,7 +73,17 @@ body{
   border-bottom: 2px solid #c9c9d4;
   font-size: 0.9rem;
   color: #797980;
-  
+}
+.results-table > .single-row p{
+  margin-bottom: 0;
+}
+.results-table > .single-row a{
+  cursor: pointer;
+  color: #5779FF;
+  font-weight: 600;
+}
+.results-table > .single-row a:hover{
+  text-decoration: underline;
 }
 
 #style-3::-webkit-scrollbar-track

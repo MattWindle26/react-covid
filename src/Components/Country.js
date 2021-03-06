@@ -1,8 +1,8 @@
 import "../css/Blocks.css";
-const Country = ({covidContries, id, countryName, cases, deaths, recovered, favorite }) => {
+const Country = ({ covidContries, id, countryName, cases, deaths, recovered, favorite, setSpecificCountry }) => {
     
     const CountryData = () =>{
-        console.log(countryName);
+        setSpecificCountry(countryName);
     }
 
 
@@ -10,7 +10,7 @@ const Country = ({covidContries, id, countryName, cases, deaths, recovered, favo
 
         <div className="single-row" key={id}>
                     {/* <p>{id}</p> */}
-            <a onClick={CountryData}>{countryName}</a>
+            <p onClick={CountryData}>{countryName}</p>
                     <p>{cases}</p>
                     <p>{deaths}</p>
                     <p>{recovered}</p>

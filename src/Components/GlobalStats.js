@@ -5,7 +5,6 @@ const GlobalStats = ({ covidAll }) => {
 
 const strip = (num) =>{
     const l = num.toString().length;
-    console.log(l);
     if(l < 10){
         num = num.toString().slice(0, -6) + "M";
     }else{
