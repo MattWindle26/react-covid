@@ -10,6 +10,42 @@ body{
   background: #fefefe;
 }
 
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #5779FF;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #5779FF transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 .dashboard{
   background-color: #0B2559;
@@ -51,9 +87,17 @@ body{
   width: 100%;
 }
 .adaptive-data{
+  position: relative;
   grid-column: 6 / -1;
   grid-row: 2 / -1;
 }
+.adaptive-data .lds-ring {
+  position: absolute;
+  top: 50%;  
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+}
+
 .results-table{
   overflow-y: scroll;
   height: 90%;
@@ -131,4 +175,46 @@ body{
 .global-data .gd-stat h3{
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+.country-name{
+  font-family: 600;
+  color: #5779FF;
+  cursor: pointer;
+}
+.country-name:hover{
+  text-decoration: underline;
+}
+
+.flag{
+  background-color: #eee;
+  padding: 5px;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+.countryNameFlag{
+  display: flex;
+  align-items: center;
+}
+.single-country-data{
+  width: 100%;
+  max-width: 300px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+.single-country-data p{
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0.25em;
+  border-bottom: 1px solid #797980;
+}
+.single-country-data > div:first-of-type p{
+  font-weight: 600;
+  text-align: right;
+}
+.single-country-data > div:first-of-type p:after{
+  content: " :"
 }

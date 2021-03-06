@@ -1,7 +1,7 @@
 import "../css/Blocks.css";
 import Country from "./Country"
 
-const Covid = ({ covidContries, setSpecificCountry } ) => {
+const Covid = ({ covidContries,fetchCountryData } ) => {
 
     return (
         
@@ -15,7 +15,7 @@ const Covid = ({ covidContries, setSpecificCountry } ) => {
                     deaths={covidCountry.deaths}
                     recovered={covidCountry.recovered}
                     favorite={false}
-                    setSpecificCountry={setSpecificCountry}
+                    fetchCountryData={fetchCountryData}
                 />
 
             ))}

@@ -10,7 +10,7 @@ function App() {
   const [covidContries, setCovidCountries] = useState(null);
   const [covidAll, setCovidAll] = useState(null);
   const [lastUpdate, setLastUpdate] = useState("");
-  const [specificCountry, setSpecificCountry] = useState(null);
+  const [singleCountryData, setsingleCountryData] = useState(null);
 
   useEffect(() => {
 
@@ -52,14 +52,17 @@ function App() {
   }
 
 
-  const fetchCountryData = () =>{
-    fetch("https://disease.sh/v3/covid-19/countries/" + specificCountry)
+  const fetchCountryData = (url) =>{
+    setsingleCountryData();
+    fetch("https://disease.sh/v3/covid-19/countries/" + url )
       .then(res => {
         return res.json();
       })
       .then((data) => {
-        console.log(data)
-      })
+        console.log(data);
+        setsingleCountryData(data);
+      });
+    return;
   }
 
   return (
@@ -67,7 +70,7 @@ function App() {
       <Nav />
       <div className="dashboard-content">
         <div className=" dashboard-block dashboard-nav">
-          <p>last update: {lastUpdate} GMT</p>
+          <p>Data correct at: {lastUpdate} GMT</p>
         </div>
         <div className="dashboard-block all-results">
           <h2>Recent info (Country)</h2>
@@ -81,9 +84,9 @@ function App() {
             {covidContries && covidAll && 
             <CountryList 
             covidContries={covidContries}
-            setSpecificCountry={setSpecificCountry}
+            fetchCountryData={fetchCountryData}
              />}
-            {!covidContries && "Loading..."}
+            {!covidContries && <div className="lds-ring"><div></div><div></div><div></div><div></div></div>}
           </div>
         </div>
 
@@ -91,11 +94,51 @@ function App() {
           <h2>Global stats</h2>
           <p>These are that combined stats of all the countries affected by COVID 19.</p>
           {covidAll && <GlobalStats covidAll={covidAll} /> } 
-          {!covidAll && "Loading..."}
+          {!covidAll && <div className="lds-ring"><div></div><div></div><div></div><div></div></div>}
         </div>       
        <div className="dashboard-block adaptive-data">
-          <h2>Data for {specificCountry && specificCountry}</h2>
-          {specificCountry && fetchCountryData()}
+          {!singleCountryData && <div className="lds-ring"><div></div><div></div><div></div><div></div></div>}
+          {singleCountryData &&
+          <>
+            <h2 className="countryNameFlag"><img className="flag" src={singleCountryData.countryInfo.flag} alt="" /> {singleCountryData.country}</h2>
+            
+            <div className="single-country-data">
+              <div>
+                <p>Cases </p>
+                <p>Todays cases</p>
+                <p>Total deaths</p>
+                <p>Todays deaths</p>
+                <p>Recovered</p>
+                <p>Todays Recovered</p>
+                <p>Active cases</p>
+                <p>Critical cases</p>
+                <p>Cases per one million</p>
+                <p>Population</p>
+                <p>Active per one million</p>
+                <p>Recovered per one million</p>
+                <p>Critical per one million</p>
+              </div>              
+              <div>
+                <p>{singleCountryData.cases}</p>
+                <p>{singleCountryData.todayCases}</p>
+                <p>{singleCountryData.deaths}</p>
+                <p>{singleCountryData.todayDeaths}</p>
+                <p>{singleCountryData.recovered}</p>
+                <p>{singleCountryData.todayRecovered}</p>
+                <p>{singleCountryData.active}</p>
+                <p>{singleCountryData.critical}</p>
+                <p>{singleCountryData.casesPerOneMillion}</p>
+                <p>{singleCountryData.population}</p>
+                <p>{singleCountryData.activePerOneMillion}</p>
+                <p>{singleCountryData.recoveredPerOneMillion}</p>
+                <p>{singleCountryData.criticalPerOneMillion}</p>
+              </div>
+            </div>
+
+
+
+          </>
+          }
         </div>
         
       </div>
